@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════
+   CSS VARIABLES
+═══════════════════════════════════════════ */
+:root {
+  --cyan:        #02dbda;
+  --cyan-dim:    #01a8a7;
+  --cyan-dark:   #017a79;
+  --slate:       #222d37;
+  --slate-light: #2d3d4a;
+  --slate-dark:  #161f27;
+  --bg:          #050a0e;
+  --text:        #cdd9e5;
+  --text-dim:    #7a9ab0;
+  --text-muted:  #3d5468;
+}
+
+/* ═══════════════════════════════════════════
+   BASE
+═══════════════════════════════════════════ */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; background: #050a0e; }
+
+  body {
+    background: #050a0e;
+    color: var(--text);
+    font-family: 'Roboto', system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Racing Sans One', cursive;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+  }
+
+  code, pre, .mono { font-family: 'Roboto Mono', monospace; }
+
+  ::selection { background: rgba(2,219,218,0.35); color: #fff; }
+
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: #050a0e; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #02dbda, #017a79);
+    border-radius: 2px;
+  }
+}
+
+/* ═══════════════════════════════════════════
+   STAR FIELD
+═══════════════════════════════════════════ */
+.stars-sm {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(2,219,218,0.5)  0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 8%,  rgba(2,219,218,0.4)  0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 25%, rgba(2,219,218,0.5)  0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 80%, rgba(2,219,218,0.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 10%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 90%, rgba(2,219,218,0.4)  0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 45%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 55%, rgba(2,219,218,0.3)  0%, transparent 100%),
+    radial-gradient(1px 1px at 5%  50%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 30%, rgba(2,219,218,0.5)  0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 20% 65%, rgba(2,219,218,0.4)  0%, transparent 100%),
+    radial-gradient(1px 1px at 65% 85%, rgba(255,255,255,0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 3%  20%, rgba(2,219,218,0.3)  0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 90%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 70%, rgba(2,219,218,0.4)  0%, transparent 100%),
+    radial-gradient(1px 1px at 30% 5%,  rgba(255,255,255,0.6) 0%, transparent 100%);
+  animation: starDrift 80s linear infinite;
+}
+
+.stars-md {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 18% 22%, rgba(2,219,218,0.7)  0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 42% 55%, rgba(180,240,255,0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 67% 18%, rgba(2,219,218,0.5)  0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 62%, rgba(180,240,255,0.7) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 8%  72%, rgba(2,219,218,0.6)  0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 55% 88%, rgba(255,255,255,0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 33% 35%, rgba(2,219,218,0.7)  0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 75% 45%, rgba(180,240,255,0.5) 0%, transparent 100%),
+    radial-gradient(2px 2px at 50% 12%,     rgba(2,219,218,0.8)  0%, transparent 100%),
+    radial-gradient(2px 2px at 22% 92%,     rgba(255,255,255,0.7) 0%, transparent 100%);
+  animation: starDrift 120s linear infinite reverse;
+}
+
+.stars-lg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    radial-gradient(2.5px 2.5px at 15% 35%, rgba(2,219,218,0.9)  0%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 72% 28%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(3px 3px   at 38% 68%,   rgba(2,219,218,0.7)  0%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 85% 82%, rgba(180,240,255,0.8) 0%, transparent 100%),
+    radial-gradient(3px 3px   at 5%  90%,   rgba(2,219,218,0.9)  0%, transparent 100%),
+    radial-gradient(2.5px 2.5px at 60% 5%,  rgba(255,255,255,0.8) 0%, transparent 100%);
+  animation: starTwinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes starDrift {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-60px); }
+}
+@keyframes starTwinkle {
+  0%   { opacity: 0.4; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* ═══════════════════════════════════════════
+   COMPONENTS
+═══════════════════════════════════════════ */
+@layer components {
+
+  /* Glass surfaces */
+  .glass {
+    background: rgba(34,45,55,0.35);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(2,219,218,0.12);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg,
+      rgba(34,45,55,0.7)  0%,
+      rgba(22,31,39,0.85) 50%,
+      rgba(34,45,55,0.6)  100%);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(2,219,218,0.1);
+    box-shadow:
+      0 30px 60px -15px rgba(0,0,0,0.95),
+      inset 0 1px 0 rgba(2,219,218,0.07),
+      inset 0 -1px 0 rgba(2,219,218,0.03);
+  }
+
+  /* ── Text styles ── */
+  .racing-gradient {
+    font-family: 'Racing Sans One', cursive;
+    background: linear-gradient(135deg, #02dbda 0%, #01a8a7 40%, #ffffff 70%, #02dbda 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 5s ease infinite;
+  }
+
+  .racing-white {
+    font-family: 'Racing Sans One', cursive;
+    color: #ffffff;
+    text-shadow: 0 0 40px rgba(2,219,218,0.3), 0 0 80px rgba(2,219,218,0.1);
+  }
+
+  .gradient-text {
+    font-family: 'Racing Sans One', cursive;
+    background: linear-gradient(135deg, #02dbda 0%, #01a8a7 50%, #02dbda 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 6s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%,100% { background-position: 0% 50%; }
+    50%     { background-position: 100% 50%; }
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2.2rem;
+    font-family: 'Racing Sans One', cursive;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    color: #050a0e;
+    border-radius: 9999px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #02dbda, #01a8a7, #02dbda);
+    background-size: 200% 200%;
+    animation: gradientShift 4s ease infinite;
+    box-shadow: 0 0 30px rgba(2,219,218,0.55), 0 0 60px rgba(2,219,218,0.2);
+    transition: box-shadow 0.3s, transform 0.2s;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 50px rgba(2,219,218,0.9), 0 0 100px rgba(2,219,218,0.5), 0 0 150px rgba(2,219,218,0.2);
+    transform: translateY(-3px);
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.25), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .btn-primary:hover::after { opacity: 1; }
+
+  .btn-outline {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2.2rem;
+    font-family: 'Racing Sans One', cursive;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    color: #02dbda;
+    border-radius: 9999px;
+    border: 1px solid rgba(2,219,218,0.4);
+    background: rgba(2,219,218,0.05);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .btn-outline:hover {
+    border-color: rgba(2,219,218,0.8);
+    background: rgba(2,219,218,0.12);
+    box-shadow: 0 0 25px rgba(2,219,218,0.35), inset 0 0 25px rgba(2,219,218,0.06);
+    transform: translateY(-3px);
+    color: #ffffff;
+  }
+
+  /* ── Section label ── */
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #02dbda;
+    margin-bottom: 1rem;
+  }
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 2.5rem;
+    background: linear-gradient(90deg, #02dbda, transparent);
+  }
+  .section-label::before {
+    background: linear-gradient(90deg, transparent, #02dbda);
+  }
+
+  /* ── Neon border ── */
+  .neon-border {
+    border: 1px solid rgba(2,219,218,0.2);
+    box-shadow: 0 0 8px rgba(2,219,218,0.1), inset 0 0 8px rgba(2,219,218,0.03);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .neon-border:hover {
+    border-color: rgba(2,219,218,0.55);
+    box-shadow: 0 0 20px rgba(2,219,218,0.3), 0 0 40px rgba(2,219,218,0.12), inset 0 0 15px rgba(2,219,218,0.05);
+  }
+
+  /* ── Skill bar ── */
+  .skill-bar {
+    height: 3px;
+    background: rgba(34,45,55,0.8);
+    border-radius: 9999px;
+    overflow: visible;
+    position: relative;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 9999px;
+    background: linear-gradient(90deg, #017a79, #02dbda, #01a8a7);
+    box-shadow: 0 0 8px rgba(2,219,218,0.8), 0 0 20px rgba(2,219,218,0.4);
+    position: relative;
+  }
+  .skill-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: -1px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #02dbda;
+    box-shadow: 0 0 8px rgba(2,219,218,1), 0 0 16px rgba(2,219,218,0.8);
+  }
+}
+
+/* ═══════════════════════════════════════════
+   UTILITIES
+═══════════════════════════════════════════ */
+@layer utilities {
+
+  .font-racing { font-family: 'Racing Sans One', cursive !important; }
+  .font-roboto { font-family: 'Roboto', sans-serif !important; }
+  .font-mono   { font-family: 'Roboto Mono', monospace !important; }
+
+  /* Animated cyan shimmer text */
+  .text-neon {
+    background: linear-gradient(90deg, #02dbda 0%, #ffffff 30%, #02dbda 60%, #01a8a7 80%, #02dbda 100%);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerText 4s linear infinite;
+  }
+
+  @keyframes shimmerText {
+    0%   { background-position: 0% center; }
+    100% { background-position: 300% center; }
+  }
+
+  /* Text size utilities */
+  .text-hero    { font-family: 'Racing Sans One', cursive; font-size: clamp(3.5rem,9vw,8rem);    line-height: 1;    letter-spacing: 0.03em; }
+  .text-display { font-family: 'Racing Sans One', cursive; font-size: clamp(2rem,5vw,4.5rem);    line-height: 1.05; letter-spacing: 0.02em; }
+  .text-title   { font-family: 'Racing Sans One', cursive; font-size: clamp(1.4rem,3vw,2.2rem);  line-height: 1.2;  letter-spacing: 0.02em; }
+
+  /* Backgrounds */
+  .bg-base { background: #050a0e; }
+
+  .bg-space-grid {
+    background-image:
+      linear-gradient(rgba(2,219,218,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(2,219,218,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+
+  .bg-dot-space {
+    background-image: radial-gradient(rgba(2,219,218,0.1) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Perspective */
+  .perspective-600  { perspective: 600px; }
+  .perspective-1000 { perspective: 1000px; }
+  .perspective-1500 { perspective: 1500px; }
+  .preserve-3d      { transform-style: preserve-3d; }
+
+  /* Glow helpers */
+  .glow-cyan { box-shadow: 0 0 30px rgba(2,219,218,0.5), 0 0 60px rgba(2,219,218,0.2); }
+
+  /* Orb */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+}
