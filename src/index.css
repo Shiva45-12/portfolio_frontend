@@ -26,7 +26,7 @@
 @layer base {
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; background: #050a0e; }
+  html { scroll-behavior: smooth; background: #050a0e; scroll-behavior: auto; }
 
   body {
     background: #050a0e;
@@ -35,6 +35,7 @@
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    will-change: scroll-position;
   }
 
   h1, h2, h3, h4, h5, h6 {
