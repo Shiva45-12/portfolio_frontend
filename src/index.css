@@ -26,7 +26,11 @@
 @layer base {
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { scroll-behavior: smooth; background: #050a0e; scroll-behavior: auto; }
+  html { 
+    scroll-behavior: smooth; 
+    background: #050a0e;
+    -webkit-tap-highlight-color: transparent;
+  }
 
   body {
     background: #050a0e;
@@ -35,8 +39,8 @@
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    will-change: scroll-position;
   }
+
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Racing Sans One', cursive;
@@ -55,6 +59,14 @@
     background: linear-gradient(180deg, #02dbda, #017a79);
     border-radius: 2px;
   }
+}
+
+/* ═══════════════════════════════════════════
+   SECTION OPTIMIZATION
+═══════════════════════════════════════════ */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
 }
 
 /* ═══════════════════════════════════════════
@@ -132,6 +144,10 @@
   mix-blend-mode: screen;
 }
 
+.stars-sm, .stars-md, .stars-lg {
+  will-change: transform;
+}
+
 /* ═══════════════════════════════════════════
    COMPONENTS
 ═══════════════════════════════════════════ */
@@ -143,6 +159,7 @@
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(2,219,218,0.12);
+    will-change: transform, backdrop-filter;
   }
 
   .glass-card {
@@ -157,6 +174,7 @@
       0 30px 60px -15px rgba(0,0,0,0.95),
       inset 0 1px 0 rgba(2,219,218,0.07),
       inset 0 -1px 0 rgba(2,219,218,0.03);
+    will-change: transform, backdrop-filter;
   }
 
   /* ── Text styles ── */
@@ -381,3 +399,7 @@
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
 }
+
+/* ═══════════════════════════════════════════
+   END OF FILE
+═══════════════════════════════════════════ */

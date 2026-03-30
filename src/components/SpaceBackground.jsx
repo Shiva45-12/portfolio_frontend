@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 
-const STARS = Array.from({ length: 60 }, (_, i) => ({
+const STARS = Array.from({ length: 30 }, (_, i) => ({
   id: i,
   x: Math.random() * 100,
   y: Math.random() * 100,
@@ -28,7 +28,7 @@ const TRIANGLES = [
 
 const Cube3D = ({ size, top, left, right, dur, delay, color, border }) => {
   const h = size / 2;
-  const face = { position: 'absolute', width: size, height: size, background: color, border: `1px solid ${border}`, backdropFilter: 'blur(2px)' };
+  const face = { position: 'absolute', width: size, height: size, background: color, border: `1px solid ${border}` };
   return (
     <motion.div
       className="absolute pointer-events-none"
@@ -87,9 +87,6 @@ const Triangle = ({ size, top, left, right, dur, delay, color }) => (
 
 const SpaceBackground = memo(({ intensity = 1 }) => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-    <div className="stars-sm absolute inset-0" />
-    <div className="stars-md absolute inset-0" />
-    <div className="stars-lg absolute inset-0" />
 
     {STARS.map(s => (
       <motion.div

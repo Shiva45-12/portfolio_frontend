@@ -34,6 +34,7 @@ const ProjectCard = ({ project, onClick, index, isInView }) => {
         transition={{ type: 'spring', stiffness: 200, damping: 24 }}>
         <div className="relative overflow-hidden aspect-video">
           <motion.img src={project.image} alt={project.title} className="w-full h-full object-cover"
+            loading="lazy"
             animate={{ scale: hovered ? 1.1 : 1 }} transition={{ duration: 0.6 }} />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
           <motion.div className="absolute inset-0 flex items-center justify-center"
@@ -120,7 +121,7 @@ const Modal = ({ project, onClose }) => (
         <FiX className="w-5 h-5" />
       </motion.button>
       <div className="relative aspect-video">
-        <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        <img src={project.image} alt={project.title} className="w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
       </div>
       <div className="p-8">

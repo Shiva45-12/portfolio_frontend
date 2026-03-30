@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import ScrollProgress from './components/ScrollProgress';
 import BackToTop from './components/BackToTop';
 import LoadingScreen from './components/LoadingScreen';
+import GlobalStars from './components/GlobalStars';
+import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +51,9 @@ function App() {
       </AnimatePresence>
 
       {!isLoading && (
-        <div className="min-h-screen transition-colors duration-500">
+        <div className="min-h-screen transition-colors duration-500 overflow-visible">
+          <CustomCursor />
+          <GlobalStars />
           <ScrollProgress />
           <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
           
